@@ -5,8 +5,14 @@ setup(name='djangox-route',
       author_email='pak.youngrok@gmail.com',
       keywords= 'rest route autodiscover django djangox',
       url='https://github.com/youngrok/djangox-route',
-      version='0.0.1',
+      version='0.0.2',
       namespace_packages = ['djangox'],
-      packages=['djangox.route', 
+      packages=['djangox',
+                'djangox.route', 
                 ],
+
+      classifiers = [
+                     'Development Status :: 3 - Alpha',
+                     'Topic :: Software Development :: Libraries',
+                     'License :: OSI Approved :: BSD License']
       )

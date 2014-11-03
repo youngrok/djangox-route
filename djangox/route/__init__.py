@@ -5,7 +5,7 @@ import re
 import sys
 import types
 
-def discover_controllers(package):
+def discover_controllers(package, method_first=False):
     '''
     Discover controller functions within give package.
     '''
@@ -30,8 +30,12 @@ def discover_controllers(package):
             
             # TODO filter request functions
             # if len(args) == 0 or args[0] != 'request': continue
-            
-            urls.append(url('^' + name + '/(?P<resource_id>[^/\?\&]+)/' + member + '/?$', func))
+
+            if method_first:
+                urls.append(url('^' + name + '/' + member + '/(?P<resource_id>[^/\?\&]+)/?$', func))
+            else:
+                urls.append(url('^' + name + '/(?P<resource_id>[^/\?\&]+)/' + member + '/?$', func))
+
             urls.append(url('^' + name + '/' + member + '/?$', func))
 
         if 'show' in dir(controller):
